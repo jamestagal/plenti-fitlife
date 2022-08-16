@@ -9,16 +9,16 @@
 <html lang="en">
 <Head title={content.filename} />
 <body>
-  <div class="data-back-top-btn {y > 500 ? ' show' : ''}" on:click={() => window.scrollTo(0,0)}>
-  <header class="header" data-header="">
+  <div class="data-back-top-btn {y > 100 ? ' active' : ''}">
+  <header class="header{y > 100 ? ' active' : ''}" data-header="">
     <div class="container">
         <Nav />
     </div>
   </header>
   <svelte:component this={layout} {...content.fields} {allContent} {allLayouts} {content}/>
+  <Footer />
   <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
     <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
   </a>
-  <Footer />
 </body>
 </html>
