@@ -8,20 +8,20 @@
                document.getElementById(e.target.hash.substring(1)).scrollIntoView();
           }
       </script>
-     
+     <svelte:window bind:scrollY={y}/>
       <a href="." class="logo">
         <ion-icon name="barbell-sharp" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
 
         <span class="span">Fitlife</span>
       </a>
-      <svelte:window bind:scrollY={y}/>
-      <nav class="navbar {y > 20 ? ' sticky' : ''}" data-navbar="">
+   
+      <nav class="navbar {navActive ? ' active' : ''} {y > 20 ? ' sticky' : ''}" on:click={toggleMenu} data-navbar="">
 
-        <button class="nav-close-btn" on:click={toggleMenu} aria-label="close menu" data-nav-toggler="">
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler="">
           <ion-icon name="close-sharp" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
         </button>
 
-        <ul class="navbar-list{navActive ? ' active' : ''}" on:click={toggleMenu}>
+        <ul class="navbar-list">
 
           <li>
             <a on:click|preventDefault={e => scroll(e)} href="#home" class="navbar-link active" data-nav-link="">Home</a>
@@ -49,7 +49,7 @@
 
       <a href="." class="btn btn-secondary">Join Now</a>
 
-      <button class="nav-open-btn{navActive ? ' active' : ''}" on:click={toggleMenu} aria-label="open menu" data-nav-toggler="">
+      <button class="nav-open-btn" on:click={toggleMenu} aria-label="open menu" data-nav-toggler="{navActive ? ' active' : ''}">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
